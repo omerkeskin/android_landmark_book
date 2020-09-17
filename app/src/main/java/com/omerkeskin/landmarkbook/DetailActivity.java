@@ -31,7 +31,7 @@ public class DetailActivity extends AppCompatActivity {
 
         tvLandmarkDetail.setText(name);
         tvCountry.setText(country);
-        ivLandmarkDetail.setImageBitmap(MainActivity.selectedPhoto);
+        ivLandmarkDetail.setImageBitmap(Singleton.getInstance().getLandmark().getPhoto());
 
     }
 }

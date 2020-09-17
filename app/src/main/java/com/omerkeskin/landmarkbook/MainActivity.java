@@ -14,7 +14,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    static Bitmap selectedPhoto;
+    Singleton selectedLine;
     ListView lvLandmark;
     ArrayList<Landmark> landmarks;
 
@@ -64,7 +64,14 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
                 intent.putExtra("name", landmarks.get(position).getName());
                 intent.putExtra("country", landmarks.get(position).getCounrty());
-                selectedPhoto = landmarks.get(position).getPhoto();
+
+                Landmark landmark = new Landmark();
+                Bitmap photo = landmarks.get(position).getPhoto();
+                landmark.setPhoto(photo);
+                landmark.setCounrty(landmarks.get(position).getCounrty());
+                landmark.setName(landmarks.get(position).getName());
+
+                Singleton.getInstance().setLandmark(landmark);
                 startActivityForResult(intent, 1);
             }
         });
